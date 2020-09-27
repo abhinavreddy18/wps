@@ -63,8 +63,6 @@ function addQues() {
 
     console.log(questions[ques_no]);
     ques_no++;
-    window.localStorage.setItem(document.getElementById("course"), JSON.stringify(questions));
-
 }
 
 //store ques
@@ -75,12 +73,11 @@ function addPaper() {
 //students add
 function addStudent() {
     let co = students.length;
-    students[co] = {};
-    students[co].name = "";
-    students[co].roll = "";
-    students[co].email = "";
-    students[co].phone = 0;
-    students[co].password = "";
+    students.name = "";
+    students.roll = "";
+    students.email = "";
+    students.phone = 0;
+    students.password = "";
     students[co].name = document.getElementById("name").value;
     students[co].roll = document.getElementById("roll").value;
     students[co].email = document.getElementById("email").value;
@@ -91,35 +88,25 @@ function addStudent() {
 
 //student checking
 function studentcheck() {
-    let check = window.getItem(document.getElementById("roll").value);
-    if (check == document.getElementById("passkey").value)
+    let check = window.getItem(document.getElementById("roll"));
+    if (check == document.getElementById("passkey"))
         window.location.href = "quiz.html";
 }
 
 function lecturerCheck() {
     console.log("in");
-    window.localStorage.setItem('1602102', 'vasavi');
+    window.setItem("1602102", "vasavi");
     console.log("in");
-    let id = document.getElementById("emp").value;
-    console.log(id);
-    let check = window.localStorage.getItem(id);
-    console.log(check);
-    let password = document.getElementById("passkey").value;
-    console.log(password);
-    if (check == password) {
+    let check = window.getItem(document.getElementById("emp"));
+    if (check == document.getElementById("passkey")) {
         console.log("in");
-        location.href = "lecturerhome.html";
+        window.location.href = "./lecturerhome.html";
     }
 }
 
 
-
-
 // render a question
 function renderQuestion() {
-    let quesarr = JSON.parse(window.localStorage.getItem('wps'));
-
-    console.log(quesarr);
     let q = questions[runningQuestion];
 
     question.innerHTML = "<p>" + q.question + "</p>";
@@ -129,8 +116,8 @@ function renderQuestion() {
     choiceC.innerHTML = q.choiceC;
 }
 
-
 start.addEventListener("click", startQuiz);
+
 // start quiz
 function startQuiz() {
     start.style.display = "none";
