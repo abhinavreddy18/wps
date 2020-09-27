@@ -2,31 +2,37 @@
 <html lang="en-US">
 
 <head>
-    <title>Page Title</title>
+    <title>Title</title>
     <meta charset="UTF-8">
     <meta name="description" content="labs">
     <meta name="keywords" content="HTML, CSS, JavaScript">
     <meta name="author" content="Abhinav">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles1.css">
 </head>
 
 <body>
+    <div>
+        <ul>
+            <a href="#">Home</a>
+            <a href="./form.html">Week2</a>
+            <a href="./lists.html">Lists</a>
+            <a href="./shopping.html">Week3</a>
+        </ul>
+    </div>
 
     <h1 id="top">This is a Heading</h1>
     <p>This is a paragraph.</p>
     <a href="https://www.w3schools.com"> This is a hyperlink to google</a>
     <br>
-    <a href="./form.html" style="align-self: center;"><img src="images/background2.jpg" alt="image" height=500></a>
-    <p>JavaScript, often abbreviated as JS, is a programming language that conforms to the ECMAScript specification. JavaScript is high-level, often just-in-time compiled, and multi-paradigm. It has curly-bracket syntax, dynamic typing, prototype-based object-orientation,
-        and first-class functions</p>
+    <div class="row">
+        <a href="./form.html" style="align-self: center;" class="col-s-6 col-6"><img src="images/background2.jpg" alt="image" height=100></a>
+        <p class="col-s-6 col-6">JavaScript, often abbreviated as JS, is a programming language that conforms to the ECMAScript specification. JavaScript is high-level, often just-in-time compiled, and multi-paradigm. It has curly-bracket syntax, dynamic typing, prototype-based
+            object-orientation, and first-class functions</p>
+    </div>
     <br>
-    <ol>
-        <h1>List of programming languages</h1>
-        <li>Java</li>
-        <li>Android</li>
-        <li>Angular</li>
-    </ol>
-    <a href="#top" style="text-align: center;">Top</a>
+
+    <a href="#top">Top</a>
 </body>
 
 </html>
