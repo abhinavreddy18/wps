@@ -18,6 +18,10 @@ https://templatemo.com/tm-530-mini-profile
 </head>
 
 <body>
+
+
+
+
     <!-- Welcome Section -->
     <section id="tmWelcome" class="parallax-window" data-parallax="scroll" data-image-src="img/mini-profile-bg-01.jpg">
         <div class="container-fluid tm-brand-container-outer">
@@ -45,14 +49,15 @@ https://templatemo.com/tm-530-mini-profile
                             <h2 class="tm-welcome-title">Welcome to Quiz</h2>
                             <p class="pb-0">
                                 Students need to login and write the exam </p>
+                            <button href="./studentlogin.html" class="btn-primary">Student</button>
+                            <button href="./lecturerlogin.html" class="btn-primary">Lecturer</button>
                         </div>
                     </div>
                     <!-- Brown bg -->
                     <div class="col-md-5">
                         <div class="tm-welcome-right">
-                            <i class="fas fa-4x fa-address-card p-3 tm-welcome-icon"></i>
                             <p class="mb-0">
-                                Please spread a word about templatemo website. Anyone can download free Bootstrap CSS templates.
+                                <img src="img/logo.jpg" height=300 width=300 alt="VASAVI COLLEGE OF ENGINEERING" />
                             </p>
                         </div>
                     </div>
@@ -69,66 +74,48 @@ https://templatemo.com/tm-530-mini-profile
                 <div class="col-12">
                     <div class="tm-portfolio-item">
                         <div class="tm-portfolio-name text-white tm-bg-green">
-                            Project Manager
+                            Database Management Systems
                         </div>
                         <div class="tm-portfolio-description">
                             <h3 class="tm-text-green">
-                                New Company
-                                <span class="tm-title-small">(2019 January to Present)</span>
+                                DBMS
+                                <span class="tm-title-small">(3 credit)</span>
                             </h3>
                             <p class="mb-0">
-                                Nullam a tellus ultricies, ornare purus vel, porttitor massa. Aliquam facilisis purus ac eros sollicidudin, in mollis neque facilisis. Duis malesuada, mi non elementum malesuada.
+                                Database Management System (DBMS) is a software for storing and retrieving users' data while considering appropriate security measures.
                             </p>
                         </div>
                     </div>
 
                     <div class="tm-portfolio-item">
                         <div class="tm-portfolio-name text-white tm-bg-orange">
-                            Senior UX Designer
+                            Web programming and services
                         </div>
                         <div class="tm-portfolio-description">
                             <h3 class="tm-text-orange">
-                                Studio One
-                                <span class="tm-title-small">(2017 April to 2018 Dec)</span>
+                                WPS
+                                <span class="tm-title-small"></span>(3 credit)</span>
                             </h3>
                             <p class="mb-0">
-                                Phasellus ac nulla egestas, malesuada dolor quis, scelerisque arcu. Morbi aliquam, nunc vel blandit mattis, sapien nisl convallis sem, quis hendrerit nisl tellus in lectus. Proin at nibh bibendum, tincidunt mauris sit amet, porta risus. Integer id malesuada
-                                ligula.
+                                The World Wide Web, commonly known as the Web, is an information system where documents and other web resources
                             </p>
                         </div>
                     </div>
 
                     <div class="tm-portfolio-item">
                         <div class="tm-portfolio-name text-white tm-bg-blue">
-                            Graphic Designer
+                            Computer Networks
                         </div>
                         <div class="tm-portfolio-description">
                             <h3 class="tm-text-blue">
-                                Digital Com
-                                <span class="tm-title-small">(2015 Jan to 2016 Dec)</span>
+                                CN
+                                <span class="tm-title-small">(3 credit)</span>
                             </h3>
                             <p class="mb-0">
-                                Etiam porta est nisl, consectetur dapibus ante faucibus id. Nunc ullamcorper a quam eget tincidunt. Proin vehicula mauris ipsum, euismod dignissim dolor convallis ac.
-                            </p>
+                                Computer Networks is an international, archival journal providing a publication vehicle for complete coverage of all topics of interest to those involved in the computer communications networking area. </p>
                         </div>
                     </div>
 
-                    <div class="tm-portfolio-item">
-                        <div class="tm-portfolio-name text-white tm-bg-dark-gray">
-                            Design School
-                        </div>
-                        <div class="tm-portfolio-description">
-                            <h3 class="tm-text-dark-gray">
-                                Art Design College
-                                <span class="tm-title-small">
-                    (2012 May to 2014 Dec)
-                  </span>
-                            </h3>
-                            <p class="mb-0">
-                                Etiam porta est nisl, consectetur dapibus ante faucibus id. Nunc ullamcorper a quam eget tincidunt. Proin vehicula mauris ipsum, euismod dignissim dolor convallis ac.
-                            </p>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -188,7 +175,7 @@ https://templatemo.com/tm-530-mini-profile
             <div class="row">
                 <footer class="col-12">
                     <p class="text-center tm-copyright-text">
-                        Copyright 2020 Mini Profile Page - Design: Template Mo</p>
+                        Copyright 2020 @VCE Quiz</p>
                 </footer>
             </div>
         </div>
@@ -197,6 +184,7 @@ https://templatemo.com/tm-530-mini-profile
     <!-- section -->
     <script src="js/jquery.min.js"></script>
     <script src="js/parallax.min.js"></script>
+    <script src="node_modules/popper.js/dist/umd/popper.min.js"></script>
     <script>
         function detectMsBrowser() {
             using_ms_browser =
