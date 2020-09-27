@@ -11,6 +11,8 @@ const timeGauge = document.getElementById("timeGauge");
 const progress = document.getElementById("progress");
 const scoreDiv = document.getElementById("scoreContainer");
 
+let students = [];
+
 // create our questions
 let questions = [
 
@@ -26,6 +28,47 @@ const gaugeWidth = 150; // 150px
 const gaugeUnit = gaugeWidth / questionTime;
 let TIMER;
 let score = 0;
+let ques_no = 0;
+
+//add a ques
+function addQues() {
+
+    let correct_co = 0;
+    questions[ques_no] = {};
+    questions[ques_no].question = "";
+    questions[ques_no].choiceA = "";
+    questions[ques_no].choiceB = "";
+    questions[ques_no].choiceC = "";
+    questions[ques_no].correct = [];
+
+    questions[ques_no].question = document.getElementById("ques").value;
+    questions[ques_no].choiceA = document.getElementById("ans1").value;
+    questions[ques_no].choiceB = document.getElementById("ans2").value;
+    questions[ques_no].choiceC = document.getElementById("ans3").value;
+
+    if (document.getElementById("option1").checked == true)
+        questions[ques_no].correct[correct_co++] = "1";
+    if (document.getElementById("option2").checked == true)
+        questions[ques_no].correct[correct_co++] = "2";
+    if (document.getElementById("option3").checked == true)
+        questions[ques_no].correct[correct_co++] = "3";
+
+    document.getElementById("ques").value = '';
+    document.getElementById("ans1").value = '';
+    document.getElementById("ans2").value = '';
+    document.getElementById("ans3").value = '';
+    document.getElementById("option1").checked = false;
+    document.getElementById("option2").checked = false;
+    document.getElementById("option3").checked = false;
+
+    console.log(questions[ques_no]);
+    ques_no++;
+}
+
+//store ques
+function addPaper() {
+    window.setItem(document.getElementById("course"), JSON.stringify(questions));
+}
 
 // render a question
 function renderQuestion() {
@@ -36,10 +79,6 @@ function renderQuestion() {
     choiceA.innerHTML = q.choiceA;
     choiceB.innerHTML = q.choiceB;
     choiceC.innerHTML = q.choiceC;
-}
-
-function addQues() {
-
 }
 
 start.addEventListener("click", startQuiz);
@@ -86,16 +125,16 @@ function renderCounter() {
 // checkAnwer
 
 function checkAnswer(answer) {
-    if (answer == questions[runningQuestion].correct) {
-        // answer is correct
-        score++;
-        // change progress color to green
-        answerIsCorrect();
-    } else {
-        // answer is wrong
-        // change progress color to red
-        answerIsWrong();
+    let i = 0;
+    let correct_co = questions[runningQuestion].correct.length;
+    let scor_q = 0;
+    for (i = 0; i < correct_co; i++) {
+        if (answer == questions[runningQuestion].correct[i]) {
+            // answer is correct
+            scor_q++;
+        }
     }
+    score += scor_q / correct_co;
     count = 0;
     if (runningQuestion < lastQuestion) {
         runningQuestion++;

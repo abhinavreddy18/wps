@@ -3,11 +3,22 @@
 
 <head>
     <title>quiz ques</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Open+Sans:400,600" />
+    <link rel="stylesheet" href="css/all.min.css" />
+    <link rel="stylesheet" href="css/bootstrap.min.css" />
+    <link rel="stylesheet" href="css/templatemo-style.css" />
 </head>
 
 <body>
+    <script src="quiz.js"></script>
+    <label for="course">Type dbms wps or cn</label>
+    <input type="text" id="course" name="course">
+
     <form>
-        <label for="ques">question</label><br>
+        <label for="ques" onfocus="this.value=''">question</label><br>
         <input type="text" id="ques" name="ques"><br>
         <label for="ans1">answer1</label><br>
         <input type="text" id="ans1" name="ans1"><br>
@@ -15,8 +26,7 @@
         <input type="text" id="ans2" name="ans2"><br>
         <label for="ans3">answer3</label><br>
         <input type="text" id="ans3" name="ans3"><br>
-        <label for="ans4">answer4</label><br>
-        <input type="text" id="ans4" name="ans4"><br>
+
         <h1>correct options</h1>
         <input type="checkbox" id="option1" name="option1" value="option1">
         <label for="option1">option1</label>
@@ -25,8 +35,7 @@
 
         <input type="checkbox" id="option3" name="option3" value="option3">
         <label for="option3">option3</label>
-        <input type="checkbox" id="option4" name="option4" value="option4">
-        <label for="option4">option4</label>
+
     </form>
     <button onclick="addQues()">ADD QUESTION</button>
 </body>
