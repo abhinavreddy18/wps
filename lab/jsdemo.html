@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en-US">
+
+<head>
+    <title>Title</title>
+    <meta charset="UTF-8">
+    <meta name="description" content="labs">
+    <meta name="keywords" content="HTML, CSS, JavaScript">
+    <meta name="author" content="Abhinav">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles1.css">
+</head>
+
+<body>
+    <script src="./lab.js"></script>
+    <script>
+        function myFunction() {
+            document.getElementById("demo1").innerHTML = "Hello Abhinav!";
+            document.getElementById("demo2").innerHTML = "How are you?";
+        }
+    </script>
+    <p id="demos">Demo</p>
+
+    <button onclick="carDemo()">cars</button>
+
+    <button onclick="document.getElementById('demo').innerHTML = Date()">The time is?</button>
+    <p id="demo1">Greeting</p>
+    <p id="demo2"></p>
+    <button onclick="myFunction()">Greet</button>
+
+    <script>
+        function displayDate() {
+            document.getElementById("demo").innerHTML = Date();
+        }
+    </script>
+
+    <p id="demo"></p>
+
+    <button onclick="displayDate()">The time is?</button>
+    <br>
+    <label>First name</label>
+    <input type="text" name="fname" id="fname">
+    <br>
+    <label>Lirst name</label>
+    <input type="text" name="lname" id="lname">
+    <button onclick="stringsdemo()">alert</button>
+    <button onclick="stringsdemo1()">loops</button>
+</body>
+
+</html>
