@@ -70,6 +70,41 @@ function addPaper() {
     window.setItem(document.getElementById("course"), JSON.stringify(questions));
 }
 
+//students add
+function addStudent() {
+    let co = students.length;
+    students.name = "";
+    students.roll = "";
+    students.email = "";
+    students.phone = 0;
+    students.password = "";
+    students[co].name = document.getElementById("name").value;
+    students[co].roll = document.getElementById("roll").value;
+    students[co].email = document.getElementById("email").value;
+    students[co].phone = document.getElementById("phno").value;
+    students[co].password = document.getElementById("password").value;
+    window.localStorage.setItem(roll, password);
+}
+
+//student checking
+function studentcheck() {
+    let check = window.getItem(document.getElementById("roll"));
+    if (check == document.getElementById("passkey"))
+        window.location.href = "quiz.html";
+}
+
+function lecturerCheck() {
+    console.log("in");
+    window.setItem("1602102", "vasavi");
+    console.log("in");
+    let check = window.getItem(document.getElementById("emp"));
+    if (check == document.getElementById("passkey")) {
+        console.log("in");
+        window.location.href = "./lecturerhome.html";
+    }
+}
+
+
 // render a question
 function renderQuestion() {
     let q = questions[runningQuestion];

@@ -5,6 +5,7 @@
     "main": "login.html",
     "dependencies": {
         "@popperjs/core": "^2.5.2",
+        "bootstrap": "^4.5.2",
         "bootstrap4": "0.0.1-security",
         "jquery": "^3.5.1",
         "lite-server": "^2.5.4"
