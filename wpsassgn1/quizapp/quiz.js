@@ -11,16 +11,31 @@ const timeGauge = document.getElementById("timeGauge");
 const progress = document.getElementById("progress");
 const scoreDiv = document.getElementById("scoreContainer");
 
+
 let students = [];
 
 // create our questions
+let questionswps = [
+
+];
+
+let questionsdbms = [
+
+];
+
+let questionscn = [
+
+];
+
 let questions = [
 
 ];
 
+
+
 // create some variables
 
-const lastQuestion = questions.length - 1;
+let lastQuestion = questions.length - 1;
 let runningQuestion = 0;
 let count = 0;
 const questionTime = 10; // 10s
@@ -32,8 +47,9 @@ let ques_no = 0;
 
 //add a ques
 function addQues() {
-
+    console.log(questions);
     let correct_co = 0;
+    let ques_no = questions.length;
     questions[ques_no] = {};
     questions[ques_no].question = "";
     questions[ques_no].choiceA = "";
@@ -47,11 +63,11 @@ function addQues() {
     questions[ques_no].choiceC = document.getElementById("ans3").value;
 
     if (document.getElementById("option1").checked == true)
-        questions[ques_no].correct[correct_co++] = "1";
+        questions[ques_no].correct = "A";
     if (document.getElementById("option2").checked == true)
-        questions[ques_no].correct[correct_co++] = "2";
+        questions[ques_no].correct = "B";
     if (document.getElementById("option3").checked == true)
-        questions[ques_no].correct[correct_co++] = "3";
+        questions[ques_no].correct = "C";
 
     document.getElementById("ques").value = '';
     document.getElementById("ans1").value = '';
@@ -61,15 +77,16 @@ function addQues() {
     document.getElementById("option2").checked = false;
     document.getElementById("option3").checked = false;
 
-    console.log(questions[ques_no]);
-    ques_no++;
-    window.localStorage.setItem(document.getElementById("course"), JSON.stringify(questions));
-
 }
 
-//store ques
+//add paper
 function addPaper() {
-    window.setItem(document.getElementById("course"), JSON.stringify(questions));
+    console.log(questions);
+    var course = document.getElementById("course").value;
+    console.log(course);
+
+    window.localStorage.setItem(course, JSON.stringify(questions));
+
 }
 
 //students add
@@ -117,13 +134,14 @@ function lecturerCheck() {
 
 // render a question
 function renderQuestion() {
-    let quesarr = JSON.parse(window.localStorage.getItem('wps'));
 
-    console.log(quesarr);
+    quesarr = window.localStorage.getItem("wps");
+
+    questions = JSON.parse(quesarr);
+
     let q = questions[runningQuestion];
 
     question.innerHTML = "<p>" + q.question + "</p>";
-    qImg.innerHTML = "<img src=" + q.imgSrc + ">";
     choiceA.innerHTML = q.choiceA;
     choiceB.innerHTML = q.choiceB;
     choiceC.innerHTML = q.choiceC;
@@ -133,6 +151,11 @@ function renderQuestion() {
 start.addEventListener("click", startQuiz);
 // start quiz
 function startQuiz() {
+    quesarr = window.localStorage.getItem("wps");
+
+    questions = JSON.parse(quesarr);
+    lastQuestion = questions.length - 1;
+    console.log(lastQuestion);
     start.style.display = "none";
     renderQuestion();
     quiz.style.display = "block";
@@ -174,16 +197,21 @@ function renderCounter() {
 
 function checkAnswer(answer) {
     let i = 0;
-    let correct_co = questions[runningQuestion].correct.length;
+    quesarr = window.localStorage.getItem("wps");
+
+    questions = JSON.parse(quesarr);
+    let correct_co = questions[runningQuestion].correct;
+    console.log(correct_co);
+    console.log(answer);
+
     let scor_q = 0;
-    for (i = 0; i < correct_co; i++) {
-        if (answer == questions[runningQuestion].correct[i]) {
-            // answer is correct
-            scor_q++;
-        }
+
+    if (answer == questions[runningQuestion].correct) {
+        // answer is correct
+        score++;
     }
-    score += scor_q / correct_co;
-    count = 0;
+
+    console.log(score);
     if (runningQuestion < lastQuestion) {
         runningQuestion++;
         renderQuestion();
