@@ -10,6 +10,7 @@
     <link rel="stylesheet" href="css/all.min.css" />
     <link rel="stylesheet" href="css/bootstrap.min.css" />
     <link rel="stylesheet" href="css/templatemo-style.css" />
+    <link rel="stylesheet" href="css/style.css" />
 </head>
 
 <body>
@@ -19,35 +20,37 @@
             <li class="nav-item active"><a class="nav-link" href="./index.html"><span class="fa fa-home fa-lg"></span> Home</a></li>
             <li class="nav-item"><a class="nav-link" href="./aboutme.html"><span class="fa fa-info fa-lg"></span> About</a></li>
             <li class="nav-item"><a class="nav-link" href="./studentlogin.html"><span class="fa fa-list fa-lg"></span> student</a></li>
-            <li class="nav-item"><a class="nav-link" href="./lecturerhome.html"><span class="fa fa-address-card fa-lg"></span> Contact</a></li>
+            <li class="nav-item"><a class="nav-link" href="./lecturerhome.html"><span class="fa fa-address-card fa-lg"></span> Lecturer</a></li>
         </ul>
     </div>
-    <label for="course">Type dbms wps or cn</label>
-    <input type="text" id="course" name="course">
+    <div class="container">
+        <label for="course">Type dbms wps or cn</label>
+        <input type="text" id="course" name="course">
 
-    <form>
-        <label for="ques" onfocus="this.value=''">question</label><br>
-        <input type="text" id="ques" name="ques"><br>
-        <label for="ans1">answer1</label><br>
-        <input type="text" id="ans1" name="ans1"><br>
-        <label for="ans1">answer2</label><br>
-        <input type="text" id="ans2" name="ans2"><br>
-        <label for="ans3">answer3</label><br>
-        <input type="text" id="ans3" name="ans3"><br>
+        <form>
+            <label for="ques" onfocus="this.value=''">question</label><br>
+            <input type="text" id="ques" name="ques"><br>
+            <label for="ans1">answer1</label><br>
+            <input type="text" id="ans1" name="ans1"><br>
+            <label for="ans1">answer2</label><br>
+            <input type="text" id="ans2" name="ans2"><br>
+            <label for="ans3">answer3</label><br>
+            <input type="text" id="ans3" name="ans3"><br>
 
-        <h1>correct options</h1>
-        <input type="checkbox" id="option1" name="option1" value="option1">
-        <label for="option1">option1</label>
-        <input type="checkbox" id="option2" name="option2" value="option2">
-        <label for="option2">option2</label>
+            <h1>correct options</h1>
+            <input type="checkbox" id="option1" name="option1" value="option1">
+            <label for="option1">option1</label>
+            <input type="checkbox" id="option2" name="option2" value="option2">
+            <label for="option2">option2</label>
 
-        <input type="checkbox" id="option3" name="option3" value="option3">
-        <label for="option3">option3</label>
+            <input type="checkbox" id="option3" name="option3" value="option3">
+            <label for="option3">option3</label>
 
-    </form>
-    <button onclick="addQues()">ADD QUESTION</button>
-    <button onclick="addPaper()">add paper</button>
-    <a href="quiz.html">quiz</a>
+        </form>
+        <button class="btn btn-primary" onclick="addQues()">ADD QUESTION</button>
+        <button class="btn btn-primary" onclick="addPaper()">add paper</button>
+
+    </div>
 </body>
 
 </html>
