@@ -86,6 +86,7 @@ function addPaper() {
     console.log(course);
 
     window.localStorage.setItem(course, JSON.stringify(questions));
+    document.getElementById("course").value = "";
 
 }
 
@@ -103,12 +104,29 @@ function addStudent() {
     students[co].email = document.getElementById("email").value;
     students[co].phone = document.getElementById("phno").value;
     students[co].password = document.getElementById("password").value;
+    students[co].dbms = 0;
+    students[co].cn = 0;
+    students[co].wps = 0;
+    console.log("in");
+    let roll = students[co].roll;
+    let password = students[co].password;
+    console.log(roll);
+    console.log(password)
     window.localStorage.setItem(roll, password);
+    window.localStorage.setItem("stu", JSON.stringify(students));
+    document.getElementById("name").value = "";
+    document.getElementById("roll").value = "";
+    document.getElementById("email").value = "";
+    document.getElementById("phno").value = "";
+    document.getElementById("password").value = "";
+
+
 }
 
 //student checking
-function studentcheck() {
-    let check = window.getItem(document.getElementById("roll").value);
+function studentCheck() {
+    let check = window.localStorage.getItem("1");
+    console.log(check);
     if (check == document.getElementById("passkey").value)
         window.location.href = "quiz.html";
 }
@@ -248,4 +266,38 @@ function scoreRender() {
 
     scoreDiv.innerHTML = "<img src=" + img + ">";
     scoreDiv.innerHTML += "<p>" + scorePerCent + "%</p>";
+}
+
+
+//table for students
+function detailsDisplay() {
+    let dis = "";
+    dis += "<table>";
+    dis += "<tr>";
+    dis += "<th>" + "Student name" + "</th>";
+    dis += "<th>" + "Roll number" + "</th>";
+    dis += "<th>" + "dbms" + "</th>";
+    dis += "<th>" + "cn" + "</th>";
+    dis += "<th>" + "wps" + "</th>";
+    dis += "</tr>";
+
+    let i = 0;
+    let stud_arr = JSON.parse(window.localStorage.getItem("stu"));
+    console.log(stud_arr);
+    students = stud_arr;
+    let count = students.length;
+    console.log(count);
+    for (i = 0; i < count; i++) {
+
+        dis += "<tr>";
+        dis += "<td>" + students[i].name + "</td>";
+        dis += "<td>" + students[i].roll + "</td>";
+        dis += "<td>" + students[i].dbms + "</td>";
+        dis += "<td>" + students[i].cn + "</td>";
+        dis += "<td>" + students[i].wps + "</td>";
+        dis += "</tr>";
+
+    }
+    dis += "</table>";
+    document.getElementById("table").innerHTML = dis;
 }
