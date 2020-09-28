@@ -11,7 +11,7 @@ const timeGauge = document.getElementById("timeGauge");
 const progress = document.getElementById("progress");
 const scoreDiv = document.getElementById("scoreContainer");
 
-
+let student = {};
 let students = [];
 
 // create our questions
@@ -104,31 +104,44 @@ function addStudent() {
     students[co].email = document.getElementById("email").value;
     students[co].phone = document.getElementById("phno").value;
     students[co].password = document.getElementById("password").value;
-    students[co].dbms = 0;
-    students[co].cn = 0;
-    students[co].wps = 0;
+    students[co].dbms_score = 0;
+    students[co].cn_score = 0;
+    students[co].wps_score = 0;
+    students[co].wps = false;
+    students[co].dbms = false;
+    students[co].cn = false;
     console.log("in");
     let roll = students[co].roll;
     let password = students[co].password;
     console.log(roll);
-    console.log(password)
-    window.localStorage.setItem(roll, password);
+    console.log(password);
     window.localStorage.setItem("stu", JSON.stringify(students));
+    window.setTimeout(students[co].roll, JSON.stringify(students[co]));
     document.getElementById("name").value = "";
     document.getElementById("roll").value = "";
     document.getElementById("email").value = "";
     document.getElementById("phno").value = "";
     document.getElementById("password").value = "";
-
-
+    window.localStorage.setItem(roll, JSON.stringify(students[co]));
 }
 
 //student checking
 function studentCheck() {
-    let check = window.localStorage.getItem("1");
-    console.log(check);
-    if (check == document.getElementById("passkey").value)
+    let roll = document.getElementById("roll").value;
+    student = JSON.parse(window.localStorage.getItem(roll));
+    console.log(student);
+    if (student.password == document.getElementById("passkey").value) {
+        let course = document.getElementById("course").value;
+        quesarr = window.localStorage.getItem(document.getElementById("course").value);
+        questions = JSON.parse(quesarr);
+        window.localStorage.setItem("quiz", roll);
+        if (course == "wps") student.wps = true;
+        if (course == "dbms") student.dbms = true;
+        if (course == "cn") student.cn = true;
+        window.localStorage.setItem(roll, JSON.stringify(student));
+
         window.location.href = "quiz.html";
+    }
 }
 
 function lecturerCheck() {
@@ -153,7 +166,9 @@ function lecturerCheck() {
 // render a question
 function renderQuestion() {
 
-    quesarr = window.localStorage.getItem("wps");
+    console.log(student);
+    console.log(paper);
+    quesarr = window.localStorage.getItem(paper);
 
     questions = JSON.parse(quesarr);
 
@@ -165,13 +180,16 @@ function renderQuestion() {
     choiceC.innerHTML = q.choiceC;
 }
 
-
+let paper;
 start.addEventListener("click", startQuiz);
 // start quiz
 function startQuiz() {
-    quesarr = window.localStorage.getItem("wps");
-
-    questions = JSON.parse(quesarr);
+    studentroll = JSON.parse(window.localStorage.getItem("quiz"));
+    student = JSON.parse(window.localStorage.getItem(studentroll));
+    console.log(student);
+    if (student.wps) paper = "wps";
+    if (student.cn) paper = "cn";
+    if (student.dbms) paper = "dbms";
     lastQuestion = questions.length - 1;
     console.log(lastQuestion);
     start.style.display = "none";
@@ -254,9 +272,29 @@ function answerIsWrong() {
 function scoreRender() {
     scoreDiv.style.display = "block";
 
+    console.log(student);
     // calculate the amount of question percent answered by the user
     const scorePerCent = Math.round(100 * score / questions.length);
+    if (student.wps) student.wps_score = scorePerCent;
+    if (student.cn) student.cn_score = scorePerCent;
+    if (student.dbms) student.dbms_score = scorePerCent;
+    console.log(student);
 
+    let stud_arr = JSON.parse(window.localStorage.getItem("stu"));
+    console.log(stud_arr);
+    let len = stud_arr.length;
+    let i = 0;
+    for (i = 0; i < len; i++) {
+        if (stud_arr[i].roll == student.roll) {
+            stud_arr[i].cn_score = student.cn_score;
+            stud_arr[i].wps_score = student.wps_score;
+            stud_arr[i].dbms_score = student.dbms_score;
+        }
+    }
+    console.log(stud_arr);
+    window.localStorage.setItem("stu", JSON.stringify(stud_arr));
+    let stud_arr1 = JSON.parse(window.localStorage.getItem("stu"));
+    console.log(stud_arr1);
     // choose the image based on the scorePerCent
     let img = (scorePerCent >= 80) ? "img/5.png" :
         (scorePerCent >= 60) ? "img/4.png" :
@@ -292,9 +330,9 @@ function detailsDisplay() {
         dis += "<tr>";
         dis += "<td>" + students[i].name + "</td>";
         dis += "<td>" + students[i].roll + "</td>";
-        dis += "<td>" + students[i].dbms + "</td>";
-        dis += "<td>" + students[i].cn + "</td>";
-        dis += "<td>" + students[i].wps + "</td>";
+        dis += "<td>" + students[i].dbms_score + "</td>";
+        dis += "<td>" + students[i].cn_score + "</td>";
+        dis += "<td>" + students[i].wps_score + "</td>";
         dis += "</tr>";
 
     }
